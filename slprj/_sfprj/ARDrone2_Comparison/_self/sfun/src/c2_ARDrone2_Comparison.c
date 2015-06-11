@@ -28,9 +28,9 @@ static const char * c2_b_debug_family_names[3] = { "T0", "nargin", "nargout" };
 static const char * c2_c_debug_family_names[5] = { "K_OMEGA_PSI", "K_V_Z",
   "K_V_XY", "nargin", "nargout" };
 
-static const char * c2_d_debug_family_names[13] = { "reference", "x_0", "y_0",
-  "z_0", "V_x", "V_y", "f", "nargin", "nargout", "t", "x_ref", "y_ref", "z_ref"
-};
+static const char * c2_d_debug_family_names[15] = { "reference", "x_0", "y_0",
+  "z_0", "V_x", "V_y", "A_y", "Am_y", "f", "nargin", "nargout", "t", "x_ref",
+  "y_ref", "z_ref" };
 
 static const char * c2_e_debug_family_names[24] = { "T0", "K_V_XY", "K_V_Z",
   "K_OMEGA_PSI", "x_n", "y_n", "z_n", "psi_nm1", "psi_ez_nm1", "t", "x_ref_n",
@@ -460,16 +460,16 @@ static void sf_gateway_c2_ARDrone2_Comparison
     c2_sf_marshallIn);
   CV_SCRIPT_FCN(2, 0);
   _SFD_SCRIPT_CALL(2U, chartInstance->c2_sfEvent, 3);
-  c2_b_K_V_XY = 0.91;
+  c2_b_K_V_XY = 0.97;
   _SFD_SCRIPT_CALL(2U, chartInstance->c2_sfEvent, 4);
-  c2_b_K_V_Z = 0.91;
+  c2_b_K_V_Z = 0.87;
   _SFD_SCRIPT_CALL(2U, chartInstance->c2_sfEvent, 5);
-  c2_b_K_OMEGA_PSI = 0.91;
+  c2_b_K_OMEGA_PSI = 0.98;
   _SFD_SCRIPT_CALL(2U, chartInstance->c2_sfEvent, -5);
   _SFD_SYMBOL_SCOPE_POP();
-  c2_K_V_XY = 0.91;
-  c2_K_V_Z = 0.91;
-  c2_K_OMEGA_PSI = 0.91;
+  c2_K_V_XY = 0.97;
+  c2_K_V_Z = 0.87;
+  c2_K_OMEGA_PSI = 0.98;
   _SFD_SCRIPT_CALL(0U, chartInstance->c2_sfEvent, 6);
   c2_c_x_n = c2_input[0];
   _SFD_SCRIPT_CALL(0U, chartInstance->c2_sfEvent, 7);
@@ -495,8 +495,8 @@ static void sf_gateway_c2_ARDrone2_Comparison
   c2_y_ref_np1 = c2_b_y_ref_np1;
   c2_z_ref_np1 = c2_b_z_ref_np1;
   _SFD_SCRIPT_CALL(0U, chartInstance->c2_sfEvent, 22);
-  c2_A = (c2_y_ref_np1 - 0.91 * (c2_c_y_ref_n - c2_c_y_n)) - c2_c_y_n;
-  c2_B = (c2_x_ref_np1 - 0.91 * (c2_c_x_ref_n - c2_c_x_n)) - c2_c_x_n;
+  c2_A = (c2_y_ref_np1 - 0.97 * (c2_c_y_ref_n - c2_c_y_n)) - c2_c_y_n;
+  c2_B = (c2_x_ref_np1 - 0.97 * (c2_c_x_ref_n - c2_c_x_n)) - c2_c_x_n;
   c2_x = c2_A;
   c2_y = c2_B;
   c2_b_x = c2_x;
@@ -516,14 +516,14 @@ static void sf_gateway_c2_ARDrone2_Comparison
   c2_h_x = c2_c_psi_ez_n;
   c2_i_x = c2_h_x;
   c2_i_x = muDoubleScalarSin(c2_i_x);
-  c2_c_V_xy_n = 10.0 * (((c2_x_ref_np1 - 0.91 * (c2_c_x_ref_n - c2_c_x_n)) -
-    c2_c_x_n) * c2_g_x + ((c2_y_ref_np1 - 0.91 * (c2_c_y_ref_n - c2_c_y_n)) -
+  c2_c_V_xy_n = 10.0 * (((c2_x_ref_np1 - 0.97 * (c2_c_x_ref_n - c2_c_x_n)) -
+    c2_c_x_n) * c2_g_x + ((c2_y_ref_np1 - 0.97 * (c2_c_y_ref_n - c2_c_y_n)) -
     c2_c_y_n) * c2_i_x);
   _SFD_SCRIPT_CALL(0U, chartInstance->c2_sfEvent, 30);
-  c2_c_V_z = 10.0 * ((c2_z_ref_np1 - 0.91 * (c2_c_z_ref_n - c2_c_z_n)) -
+  c2_c_V_z = 10.0 * ((c2_z_ref_np1 - 0.87 * (c2_c_z_ref_n - c2_c_z_n)) -
                      c2_c_z_n);
   _SFD_SCRIPT_CALL(0U, chartInstance->c2_sfEvent, 32);
-  c2_c_omega_psi_n = 10.0 * ((c2_c_psi_ez_n - 0.91 * (c2_c_psi_ez_nm1 -
+  c2_c_omega_psi_n = 10.0 * ((c2_c_psi_ez_n - 0.98 * (c2_c_psi_ez_nm1 -
     c2_c_psi_nm1)) - c2_c_psi_nm1);
   _SFD_SCRIPT_CALL(0U, chartInstance->c2_sfEvent, 36);
   c2_output[0] = c2_c_V_xy_n;
@@ -593,17 +593,21 @@ static void c2_getReferences(SFc2_ARDrone2_ComparisonInstanceStruct
   *chartInstance, real_T c2_b_t, real_T *c2_x_ref, real_T *c2_y_ref, real_T
   *c2_z_ref)
 {
-  uint32_T c2_debug_family_var_map[13];
+  uint32_T c2_debug_family_var_map[15];
   real_T c2_reference;
   real_T c2_x_0;
   real_T c2_y_0;
   real_T c2_z_0;
   real_T c2_V_x;
   real_T c2_V_y;
+  real_T c2_A_y;
+  real_T c2_Am_y;
   real_T c2_f;
   real_T c2_nargin = 1.0;
   real_T c2_nargout = 3.0;
-  _SFD_SYMBOL_SCOPE_PUSH_EML(0U, 13U, 13U, c2_d_debug_family_names,
+  real_T c2_x;
+  real_T c2_b_x;
+  _SFD_SYMBOL_SCOPE_PUSH_EML(0U, 15U, 15U, c2_d_debug_family_names,
     c2_debug_family_var_map);
   _SFD_SYMBOL_SCOPE_ADD_EML(&c2_reference, 0U, c2_sf_marshallOut);
   _SFD_SYMBOL_SCOPE_ADD_EML_IMPORTABLE(&c2_x_0, 1U, c2_sf_marshallOut,
@@ -613,45 +617,55 @@ static void c2_getReferences(SFc2_ARDrone2_ComparisonInstanceStruct
   _SFD_SYMBOL_SCOPE_ADD_EML_IMPORTABLE(&c2_z_0, 3U, c2_sf_marshallOut,
     c2_sf_marshallIn);
   _SFD_SYMBOL_SCOPE_ADD_EML(&c2_V_x, 4U, c2_sf_marshallOut);
-  _SFD_SYMBOL_SCOPE_ADD_EML(&c2_V_y, 5U, c2_sf_marshallOut);
-  _SFD_SYMBOL_SCOPE_ADD_EML_IMPORTABLE(&c2_f, 6U, c2_sf_marshallOut,
+  _SFD_SYMBOL_SCOPE_ADD_EML_IMPORTABLE(&c2_V_y, 5U, c2_sf_marshallOut,
     c2_sf_marshallIn);
-  _SFD_SYMBOL_SCOPE_ADD_EML_IMPORTABLE(&c2_nargin, 7U, c2_sf_marshallOut,
+  _SFD_SYMBOL_SCOPE_ADD_EML_IMPORTABLE(&c2_A_y, 6U, c2_sf_marshallOut,
     c2_sf_marshallIn);
-  _SFD_SYMBOL_SCOPE_ADD_EML_IMPORTABLE(&c2_nargout, 8U, c2_sf_marshallOut,
+  _SFD_SYMBOL_SCOPE_ADD_EML(&c2_Am_y, 7U, c2_sf_marshallOut);
+  _SFD_SYMBOL_SCOPE_ADD_EML(&c2_f, 8U, c2_sf_marshallOut);
+  _SFD_SYMBOL_SCOPE_ADD_EML_IMPORTABLE(&c2_nargin, 9U, c2_sf_marshallOut,
     c2_sf_marshallIn);
-  _SFD_SYMBOL_SCOPE_ADD_EML_IMPORTABLE(&c2_b_t, 9U, c2_sf_marshallOut,
+  _SFD_SYMBOL_SCOPE_ADD_EML_IMPORTABLE(&c2_nargout, 10U, c2_sf_marshallOut,
     c2_sf_marshallIn);
-  _SFD_SYMBOL_SCOPE_ADD_EML_IMPORTABLE(c2_x_ref, 10U, c2_sf_marshallOut,
+  _SFD_SYMBOL_SCOPE_ADD_EML_IMPORTABLE(&c2_b_t, 11U, c2_sf_marshallOut,
     c2_sf_marshallIn);
-  _SFD_SYMBOL_SCOPE_ADD_EML_IMPORTABLE(c2_y_ref, 11U, c2_sf_marshallOut,
+  _SFD_SYMBOL_SCOPE_ADD_EML_IMPORTABLE(c2_x_ref, 12U, c2_sf_marshallOut,
     c2_sf_marshallIn);
-  _SFD_SYMBOL_SCOPE_ADD_EML_IMPORTABLE(c2_z_ref, 12U, c2_sf_marshallOut,
+  _SFD_SYMBOL_SCOPE_ADD_EML_IMPORTABLE(c2_y_ref, 13U, c2_sf_marshallOut,
+    c2_sf_marshallIn);
+  _SFD_SYMBOL_SCOPE_ADD_EML_IMPORTABLE(c2_z_ref, 14U, c2_sf_marshallOut,
     c2_sf_marshallIn);
   CV_SCRIPT_FCN(3, 0);
   _SFD_SCRIPT_CALL(3U, chartInstance->c2_sfEvent, 2);
-  c2_reference = 0.0;
+  c2_reference = 2.0;
   _SFD_SCRIPT_CALL(3U, chartInstance->c2_sfEvent, 4);
-  c2_x_0 = 0.25;
+  c2_x_0 = 2.0;
   _SFD_SCRIPT_CALL(3U, chartInstance->c2_sfEvent, 5);
-  c2_y_0 = 0.25;
+  c2_y_0 = 2.0;
   _SFD_SCRIPT_CALL(3U, chartInstance->c2_sfEvent, 6);
-  c2_z_0 = 1.5;
+  c2_z_0 = 5.0;
   _SFD_SCRIPT_CALL(3U, chartInstance->c2_sfEvent, 8);
-  c2_V_x = 0.2;
+  c2_V_x = 1.0;
   _SFD_SCRIPT_CALL(3U, chartInstance->c2_sfEvent, 9);
-  c2_V_y = 0.3;
+  c2_V_y = 0.5;
   _SFD_SCRIPT_CALL(3U, chartInstance->c2_sfEvent, 11);
-  c2_f = 0.15915494309189535;
-  _SFD_SCRIPT_CALL(3U, chartInstance->c2_sfEvent, 13);
-  CV_SCRIPT_SWITCH(3, 0, 1);
-  _SFD_SCRIPT_CALL(3U, chartInstance->c2_sfEvent, 15);
-  *c2_x_ref = c2_x_0 + 0.2 * c2_b_t;
+  c2_A_y = 0.0065;
+  _SFD_SCRIPT_CALL(3U, chartInstance->c2_sfEvent, 12);
+  c2_Am_y = 5.0;
+  _SFD_SCRIPT_CALL(3U, chartInstance->c2_sfEvent, 14);
+  c2_f = 0.02;
   _SFD_SCRIPT_CALL(3U, chartInstance->c2_sfEvent, 16);
-  *c2_y_ref = c2_y_0 + 0.3 * c2_b_t;
-  _SFD_SCRIPT_CALL(3U, chartInstance->c2_sfEvent, 17);
+  CV_SCRIPT_SWITCH(3, 0, 3);
+  _SFD_SCRIPT_CALL(3U, chartInstance->c2_sfEvent, 26);
+  *c2_x_ref = c2_x_0 + c2_b_t;
+  _SFD_SCRIPT_CALL(3U, chartInstance->c2_sfEvent, 27);
+  c2_x = 0.12566370614359174 * c2_b_t;
+  c2_b_x = c2_x;
+  c2_b_x = muDoubleScalarSin(c2_b_x);
+  *c2_y_ref = c2_y_0 + 5.0 * c2_b_x;
+  _SFD_SCRIPT_CALL(3U, chartInstance->c2_sfEvent, 28);
   *c2_z_ref = c2_z_0;
-  _SFD_SCRIPT_CALL(3U, chartInstance->c2_sfEvent, -25);
+  _SFD_SCRIPT_CALL(3U, chartInstance->c2_sfEvent, -28);
   _SFD_SYMBOL_SCOPE_POP();
 }
 
@@ -865,7 +879,7 @@ const mxArray *sf_c2_ARDrone2_Comparison_get_eml_resolved_functions_info(void)
 {
   const mxArray *c2_nameCaptureInfo = NULL;
   c2_nameCaptureInfo = NULL;
-  sf_mex_assign(&c2_nameCaptureInfo, sf_mex_createstruct("structure", 2, 18, 1),
+  sf_mex_assign(&c2_nameCaptureInfo, sf_mex_createstruct("structure", 2, 19, 1),
                 false);
   c2_info_helper(&c2_nameCaptureInfo);
   sf_mex_emlrtNameCapturePostProcessR2012a(&c2_nameCaptureInfo);
@@ -910,6 +924,8 @@ static void c2_info_helper(const mxArray **c2_info)
   const mxArray *c2_lhs16 = NULL;
   const mxArray *c2_rhs17 = NULL;
   const mxArray *c2_lhs17 = NULL;
+  const mxArray *c2_rhs18 = NULL;
+  const mxArray *c2_lhs18 = NULL;
   sf_mex_addfield(*c2_info, c2_emlrt_marshallOut(""), "context", "context", 0);
   sf_mex_addfield(*c2_info, c2_emlrt_marshallOut("commonController"), "name",
                   "name", 0);
@@ -962,7 +978,7 @@ static void c2_info_helper(const mxArray **c2_info)
   sf_mex_addfield(*c2_info, c2_emlrt_marshallOut(
     "[E]/home/m/Dropbox/Tesina/Simulaciones/Quadrotor Simulation/ARDrone2/getControlConstants.m"),
                   "resolved", "resolved", 2);
-  sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(1431569864U), "fileTimeLo",
+  sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(1432407786U), "fileTimeLo",
                   "fileTimeLo", 2);
   sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(0U), "fileTimeHi",
                   "fileTimeHi", 2);
@@ -984,7 +1000,7 @@ static void c2_info_helper(const mxArray **c2_info)
   sf_mex_addfield(*c2_info, c2_emlrt_marshallOut(
     "[E]/home/m/Dropbox/Tesina/Simulaciones/Quadrotor Simulation/ARDrone2/getReferences.m"),
                   "resolved", "resolved", 3);
-  sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(1431810890U), "fileTimeLo",
+  sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(1432407820U), "fileTimeLo",
                   "fileTimeLo", 3);
   sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(0U), "fileTimeHi",
                   "fileTimeHi", 3);
@@ -1150,19 +1166,19 @@ static void c2_info_helper(const mxArray **c2_info)
   sf_mex_addfield(*c2_info, sf_mex_duplicatearraysafe(&c2_lhs10), "lhs", "lhs",
                   10);
   sf_mex_addfield(*c2_info, c2_emlrt_marshallOut(
-    "[E]/home/m/Dropbox/Tesina/Simulaciones/Quadrotor Simulation/ARDrone2/commonController.m"),
+    "[E]/home/m/Dropbox/Tesina/Simulaciones/Quadrotor Simulation/ARDrone2/getReferences.m"),
                   "context", "context", 11);
-  sf_mex_addfield(*c2_info, c2_emlrt_marshallOut("mrdivide"), "name", "name", 11);
+  sf_mex_addfield(*c2_info, c2_emlrt_marshallOut("sin"), "name", "name", 11);
   sf_mex_addfield(*c2_info, c2_emlrt_marshallOut("double"), "dominantType",
                   "dominantType", 11);
   sf_mex_addfield(*c2_info, c2_emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mrdivide.p"), "resolved",
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sin.m"), "resolved",
                   "resolved", 11);
-  sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(1410832848U), "fileTimeLo",
+  sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(1395350104U), "fileTimeLo",
                   "fileTimeLo", 11);
   sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(0U), "fileTimeHi",
                   "fileTimeHi", 11);
-  sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(1370035086U), "mFileTimeLo",
+  sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(0U), "mFileTimeLo",
                   "mFileTimeLo", 11);
   sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(0U), "mFileTimeHi",
                   "mFileTimeHi", 11);
@@ -1173,15 +1189,16 @@ static void c2_info_helper(const mxArray **c2_info)
   sf_mex_addfield(*c2_info, sf_mex_duplicatearraysafe(&c2_lhs11), "lhs", "lhs",
                   11);
   sf_mex_addfield(*c2_info, c2_emlrt_marshallOut(
-    "[E]/home/m/Dropbox/Tesina/Simulaciones/Quadrotor Simulation/ARDrone2/commonController.m"),
-                  "context", "context", 12);
-  sf_mex_addfield(*c2_info, c2_emlrt_marshallOut("atan"), "name", "name", 12);
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sin.m"), "context",
+                  "context", 12);
+  sf_mex_addfield(*c2_info, c2_emlrt_marshallOut("eml_scalar_sin"), "name",
+                  "name", 12);
   sf_mex_addfield(*c2_info, c2_emlrt_marshallOut("double"), "dominantType",
                   "dominantType", 12);
   sf_mex_addfield(*c2_info, c2_emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/atan.m"), "resolved",
-                  "resolved", 12);
-  sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(1395350096U), "fileTimeLo",
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_sin.m"),
+                  "resolved", "resolved", 12);
+  sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(1286843936U), "fileTimeLo",
                   "fileTimeLo", 12);
   sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(0U), "fileTimeHi",
                   "fileTimeHi", 12);
@@ -1196,20 +1213,19 @@ static void c2_info_helper(const mxArray **c2_info)
   sf_mex_addfield(*c2_info, sf_mex_duplicatearraysafe(&c2_lhs12), "lhs", "lhs",
                   12);
   sf_mex_addfield(*c2_info, c2_emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/atan.m"), "context",
-                  "context", 13);
-  sf_mex_addfield(*c2_info, c2_emlrt_marshallOut("eml_scalar_atan"), "name",
-                  "name", 13);
+    "[E]/home/m/Dropbox/Tesina/Simulaciones/Quadrotor Simulation/ARDrone2/commonController.m"),
+                  "context", "context", 13);
+  sf_mex_addfield(*c2_info, c2_emlrt_marshallOut("mrdivide"), "name", "name", 13);
   sf_mex_addfield(*c2_info, c2_emlrt_marshallOut("double"), "dominantType",
                   "dominantType", 13);
   sf_mex_addfield(*c2_info, c2_emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_atan.m"),
-                  "resolved", "resolved", 13);
-  sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(1286843918U), "fileTimeLo",
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/ops/mrdivide.p"), "resolved",
+                  "resolved", 13);
+  sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(1410832848U), "fileTimeLo",
                   "fileTimeLo", 13);
   sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(0U), "fileTimeHi",
                   "fileTimeHi", 13);
-  sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(0U), "mFileTimeLo",
+  sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(1370035086U), "mFileTimeLo",
                   "mFileTimeLo", 13);
   sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(0U), "mFileTimeHi",
                   "mFileTimeHi", 13);
@@ -1222,11 +1238,11 @@ static void c2_info_helper(const mxArray **c2_info)
   sf_mex_addfield(*c2_info, c2_emlrt_marshallOut(
     "[E]/home/m/Dropbox/Tesina/Simulaciones/Quadrotor Simulation/ARDrone2/commonController.m"),
                   "context", "context", 14);
-  sf_mex_addfield(*c2_info, c2_emlrt_marshallOut("cos"), "name", "name", 14);
+  sf_mex_addfield(*c2_info, c2_emlrt_marshallOut("atan"), "name", "name", 14);
   sf_mex_addfield(*c2_info, c2_emlrt_marshallOut("double"), "dominantType",
                   "dominantType", 14);
   sf_mex_addfield(*c2_info, c2_emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/cos.m"), "resolved",
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/atan.m"), "resolved",
                   "resolved", 14);
   sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(1395350096U), "fileTimeLo",
                   "fileTimeLo", 14);
@@ -1243,16 +1259,16 @@ static void c2_info_helper(const mxArray **c2_info)
   sf_mex_addfield(*c2_info, sf_mex_duplicatearraysafe(&c2_lhs14), "lhs", "lhs",
                   14);
   sf_mex_addfield(*c2_info, c2_emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/cos.m"), "context",
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/atan.m"), "context",
                   "context", 15);
-  sf_mex_addfield(*c2_info, c2_emlrt_marshallOut("eml_scalar_cos"), "name",
+  sf_mex_addfield(*c2_info, c2_emlrt_marshallOut("eml_scalar_atan"), "name",
                   "name", 15);
   sf_mex_addfield(*c2_info, c2_emlrt_marshallOut("double"), "dominantType",
                   "dominantType", 15);
   sf_mex_addfield(*c2_info, c2_emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_cos.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_atan.m"),
                   "resolved", "resolved", 15);
-  sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(1286843922U), "fileTimeLo",
+  sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(1286843918U), "fileTimeLo",
                   "fileTimeLo", 15);
   sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(0U), "fileTimeHi",
                   "fileTimeHi", 15);
@@ -1269,13 +1285,13 @@ static void c2_info_helper(const mxArray **c2_info)
   sf_mex_addfield(*c2_info, c2_emlrt_marshallOut(
     "[E]/home/m/Dropbox/Tesina/Simulaciones/Quadrotor Simulation/ARDrone2/commonController.m"),
                   "context", "context", 16);
-  sf_mex_addfield(*c2_info, c2_emlrt_marshallOut("sin"), "name", "name", 16);
+  sf_mex_addfield(*c2_info, c2_emlrt_marshallOut("cos"), "name", "name", 16);
   sf_mex_addfield(*c2_info, c2_emlrt_marshallOut("double"), "dominantType",
                   "dominantType", 16);
   sf_mex_addfield(*c2_info, c2_emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sin.m"), "resolved",
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/cos.m"), "resolved",
                   "resolved", 16);
-  sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(1395350104U), "fileTimeLo",
+  sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(1395350096U), "fileTimeLo",
                   "fileTimeLo", 16);
   sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(0U), "fileTimeHi",
                   "fileTimeHi", 16);
@@ -1290,16 +1306,16 @@ static void c2_info_helper(const mxArray **c2_info)
   sf_mex_addfield(*c2_info, sf_mex_duplicatearraysafe(&c2_lhs16), "lhs", "lhs",
                   16);
   sf_mex_addfield(*c2_info, c2_emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sin.m"), "context",
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/cos.m"), "context",
                   "context", 17);
-  sf_mex_addfield(*c2_info, c2_emlrt_marshallOut("eml_scalar_sin"), "name",
+  sf_mex_addfield(*c2_info, c2_emlrt_marshallOut("eml_scalar_cos"), "name",
                   "name", 17);
   sf_mex_addfield(*c2_info, c2_emlrt_marshallOut("double"), "dominantType",
                   "dominantType", 17);
   sf_mex_addfield(*c2_info, c2_emlrt_marshallOut(
-    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_sin.m"),
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/eml_scalar_cos.m"),
                   "resolved", "resolved", 17);
-  sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(1286843936U), "fileTimeLo",
+  sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(1286843922U), "fileTimeLo",
                   "fileTimeLo", 17);
   sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(0U), "fileTimeHi",
                   "fileTimeHi", 17);
@@ -1313,6 +1329,29 @@ static void c2_info_helper(const mxArray **c2_info)
                   17);
   sf_mex_addfield(*c2_info, sf_mex_duplicatearraysafe(&c2_lhs17), "lhs", "lhs",
                   17);
+  sf_mex_addfield(*c2_info, c2_emlrt_marshallOut(
+    "[E]/home/m/Dropbox/Tesina/Simulaciones/Quadrotor Simulation/ARDrone2/commonController.m"),
+                  "context", "context", 18);
+  sf_mex_addfield(*c2_info, c2_emlrt_marshallOut("sin"), "name", "name", 18);
+  sf_mex_addfield(*c2_info, c2_emlrt_marshallOut("double"), "dominantType",
+                  "dominantType", 18);
+  sf_mex_addfield(*c2_info, c2_emlrt_marshallOut(
+    "[ILXE]$matlabroot$/toolbox/eml/lib/matlab/elfun/sin.m"), "resolved",
+                  "resolved", 18);
+  sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(1395350104U), "fileTimeLo",
+                  "fileTimeLo", 18);
+  sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(0U), "fileTimeHi",
+                  "fileTimeHi", 18);
+  sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(0U), "mFileTimeLo",
+                  "mFileTimeLo", 18);
+  sf_mex_addfield(*c2_info, c2_b_emlrt_marshallOut(0U), "mFileTimeHi",
+                  "mFileTimeHi", 18);
+  sf_mex_assign(&c2_rhs18, sf_mex_createcellmatrix(0, 1), false);
+  sf_mex_assign(&c2_lhs18, sf_mex_createcellmatrix(0, 1), false);
+  sf_mex_addfield(*c2_info, sf_mex_duplicatearraysafe(&c2_rhs18), "rhs", "rhs",
+                  18);
+  sf_mex_addfield(*c2_info, sf_mex_duplicatearraysafe(&c2_lhs18), "lhs", "lhs",
+                  18);
   sf_mex_destroy(&c2_rhs0);
   sf_mex_destroy(&c2_lhs0);
   sf_mex_destroy(&c2_rhs1);
@@ -1349,6 +1388,8 @@ static void c2_info_helper(const mxArray **c2_info)
   sf_mex_destroy(&c2_lhs16);
   sf_mex_destroy(&c2_rhs17);
   sf_mex_destroy(&c2_lhs17);
+  sf_mex_destroy(&c2_rhs18);
+  sf_mex_destroy(&c2_lhs18);
 }
 
 static const mxArray *c2_emlrt_marshallOut(const char * c2_u)
@@ -1950,14 +1991,14 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
         _SFD_CV_INIT_SCRIPT(2,1,0,0,0,0,0,0,0,0);
         _SFD_CV_INIT_SCRIPT_FCN(2,0,"getControlConstants",0,-1,177);
         _SFD_CV_INIT_SCRIPT(3,1,0,0,0,1,0,0,0,0);
-        _SFD_CV_INIT_SCRIPT_FCN(3,0,"getReferences",0,-1,576);
+        _SFD_CV_INIT_SCRIPT_FCN(3,0,"getReferences",0,-1,604);
 
         {
-          static int caseStart[] = { -1, 221, 331, 445 };
+          static int caseStart[] = { -1, 248, 358, 472 };
 
-          static int caseExprEnd[] = { 8, 227, 337, 451 };
+          static int caseExprEnd[] = { 8, 254, 364, 478 };
 
-          _SFD_CV_INIT_SCRIPT_SWITCH(3,0,196,213,572,4,&(caseStart[0]),
+          _SFD_CV_INIT_SCRIPT_SWITCH(3,0,223,240,600,4,&(caseStart[0]),
             &(caseExprEnd[0]));
         }
 
@@ -2154,10 +2195,10 @@ static void mdlSetWorkWidths_c2_ARDrone2_Comparison(SimStruct *S)
   }
 
   ssSetOptions(S,ssGetOptions(S)|SS_OPTION_WORKS_WITH_CODE_REUSE);
-  ssSetChecksum0(S,(2262764735U));
-  ssSetChecksum1(S,(4110478504U));
-  ssSetChecksum2(S,(3806103108U));
-  ssSetChecksum3(S,(1837010419U));
+  ssSetChecksum0(S,(2401559547U));
+  ssSetChecksum1(S,(3227066100U));
+  ssSetChecksum2(S,(2143521591U));
+  ssSetChecksum3(S,(2603037368U));
   ssSetmdlDerivatives(S, NULL);
   ssSetExplicitFCSSCtrl(S,1);
   ssSupportsMultipleExecInstances(S,1);
