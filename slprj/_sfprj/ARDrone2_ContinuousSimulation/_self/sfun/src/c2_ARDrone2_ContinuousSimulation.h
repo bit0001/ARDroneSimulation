@@ -33,6 +33,9 @@ typedef struct {
   real_T *c2_psi_ez_nm1;
   real_T *c2_t;
   real_T *c2_psi_ez_n;
+  real_T *c2_x_ref_np1;
+  real_T *c2_y_ref_np1;
+  real_T *c2_z_ref_np1;
 } SFc2_ARDrone2_ContinuousSimulationInstanceStruct;
 
 #endif                                 /*typedef_SFc2_ARDrone2_ContinuousSimulationInstanceStruct*/

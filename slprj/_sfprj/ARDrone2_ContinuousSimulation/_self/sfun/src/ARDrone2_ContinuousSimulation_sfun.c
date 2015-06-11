@@ -105,10 +105,10 @@ unsigned int sf_ARDrone2_ContinuousSimulation_process_check_sum_call( int nlhs,
       return 0;
     }
   } else {
-    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(316756112U);
-    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(2359567721U);
-    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(2963817323U);
-    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(740247073U);
+    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(1572326667U);
+    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(4286469987U);
+    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(3668157124U);
+    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2754741753U);
   }
 
   return 1;
@@ -146,7 +146,7 @@ unsigned int sf_ARDrone2_ContinuousSimulation_autoinheritance_info( int nlhs,
     switch (chartFileNumber) {
      case 2:
       {
-        if (strcmp(aiChksum, "wGpqEhhaBKHVUaG2zh60PF") == 0) {
+        if (strcmp(aiChksum, "Zy5D8kC4en1bplqtQSpiRC") == 0) {
           extern mxArray
             *sf_c2_ARDrone2_ContinuousSimulation_get_autoinheritance_info(void);
           plhs[0] = sf_c2_ARDrone2_ContinuousSimulation_get_autoinheritance_info
@@ -242,7 +242,7 @@ unsigned int sf_ARDrone2_ContinuousSimulation_third_party_uses_info( int nlhs,
     switch (chartFileNumber) {
      case 2:
       {
-        if (strcmp(tpChksum, "mhdCE1HpctACDJ9jYMgjoG") == 0) {
+        if (strcmp(tpChksum, "KHRSpoe1Fb2pvBAyznQVV") == 0) {
           extern mxArray
             *sf_c2_ARDrone2_ContinuousSimulation_third_party_uses_info(void);
           plhs[0] = sf_c2_ARDrone2_ContinuousSimulation_third_party_uses_info();
@@ -280,7 +280,7 @@ unsigned int sf_ARDrone2_ContinuousSimulation_jit_fallback_info( int nlhs,
     switch (chartFileNumber) {
      case 2:
       {
-        if (strcmp(tpChksum, "mhdCE1HpctACDJ9jYMgjoG") == 0) {
+        if (strcmp(tpChksum, "KHRSpoe1Fb2pvBAyznQVV") == 0) {
           extern mxArray *sf_c2_ARDrone2_ContinuousSimulation_jit_fallback_info
             (void);
           plhs[0] = sf_c2_ARDrone2_ContinuousSimulation_jit_fallback_info();
@@ -318,7 +318,7 @@ unsigned int sf_ARDrone2_ContinuousSimulation_updateBuildInfo_args_info( int
     switch (chartFileNumber) {
      case 2:
       {
-        if (strcmp(tpChksum, "mhdCE1HpctACDJ9jYMgjoG") == 0) {
+        if (strcmp(tpChksum, "KHRSpoe1Fb2pvBAyznQVV") == 0) {
           extern mxArray
             *sf_c2_ARDrone2_ContinuousSimulation_updateBuildInfo_args_info(void);
           plhs[0] =
@@ -345,7 +345,7 @@ void sf_ARDrone2_ContinuousSimulation_get_post_codegen_info( int nlhs, mxArray *
   switch (chartFileNumber) {
    case 2:
     {
-      if (strcmp(tpChksum, "mhdCE1HpctACDJ9jYMgjoG") == 0) {
+      if (strcmp(tpChksum, "KHRSpoe1Fb2pvBAyznQVV") == 0) {
         extern mxArray
           *sf_c2_ARDrone2_ContinuousSimulation_get_post_codegen_info(void);
         plhs[0] = sf_c2_ARDrone2_ContinuousSimulation_get_post_codegen_info();
