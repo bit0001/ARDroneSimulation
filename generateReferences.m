@@ -5,10 +5,12 @@
 clear;
 clc;
 
+PATH = '../../../../../WebstormProjects/ARDroneThesis/referenceAndConstantFiles/';
+
 sim('ARDrone2_ContinuousSimulation.slx');
-dlmwrite('x_ref_n.txt', x_ref_n);
-dlmwrite('y_ref_n.txt', y_ref_n);
-dlmwrite('z_ref_n.txt', z_ref_n);
-dlmwrite('x_ref_np1.txt', x_ref_np1);
-dlmwrite('y_ref_np1.txt', y_ref_np1);
-dlmwrite('z_ref_np1.txt', z_ref_np1);
+dlmwrite([PATH 'x_ref_n.txt'], x_ref_n);
+dlmwrite([PATH 'y_ref_n.txt'], y_ref_n);
+dlmwrite([PATH 'z_ref_n.txt'], z_ref_n);
+dlmwrite([PATH 'x_ref_np1.txt'], x_ref_np1);
+dlmwrite([PATH 'y_ref_np1.txt'], y_ref_np1);
+dlmwrite([PATH 'z_ref_np1.txt'], z_ref_np1);
