@@ -23,7 +23,7 @@ MLSLSF_INCLUDES  = \
     -I"/home/m/MATLAB/R2014b/simulink/include" \
     -I"/home/m/MATLAB/R2014b/stateflow/c/mex/include" \
     -I"/home/m/MATLAB/R2014b/rtw/c/src" \
-    -I"/home/m/Dropbox/Tesina/Simulaciones/Quadrotor Simulation/ARDrone2/slprj/_sfprj/ARDrone2_ContinuousSimulation/_self/sfun/src" 
+    -I"/home/m/Dropbox/Tesina/Simulations/Quadrotor Simulation/ARDrone2/slprj/_sfprj/ARDrone2_ContinuousSimulation/_self/sfun/src" 
 
 THIRD_PARTY_INCLUDES = 
 
