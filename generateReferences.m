@@ -14,3 +14,7 @@ dlmwrite([PATH 'z_ref_n.txt'], z_ref_n);
 dlmwrite([PATH 'x_ref_np1.txt'], x_ref_np1);
 dlmwrite([PATH 'y_ref_np1.txt'], y_ref_np1);
 dlmwrite([PATH 'z_ref_np1.txt'], z_ref_np1);
+
+[K_V_XY, K_V_Z, K_OMEGA_PSI] = getControlConstants();
+controlConstants = [K_V_XY K_V_Z K_OMEGA_PSI]';
+dlmwrite([PATH 'control_constants.txt'], controlConstants);
