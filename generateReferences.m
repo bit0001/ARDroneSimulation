@@ -5,7 +5,8 @@
 clear;
 clc;
 
-PATH = '../../../../../WebstormProjects/ARDroneThesis/referenceAndConstantFiles/';
+PATH = ['../../../../../PycharmProjects/ROSAutonomousFlight/catkin_ws/src/' ...
+    'ardrone_numeric_method_controller/scripts/referenceAndConstantFiles/'];
 
 sim('ARDrone2_ContinuousSimulation.slx');
 dlmwrite([PATH 'x_ref_n.txt'], x_ref_n);
