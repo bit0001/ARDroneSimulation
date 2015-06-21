@@ -4,7 +4,8 @@ clear; clc;
 sim('ARDrone2_ContinuousSimulation.slx');
 figure;
 %% Loading data generated during test
-PATH_TO_POSITIONS = '../../../../../WebstormProjects/ARDroneThesis/positionFiles/';
+PATH_TO_POSITIONS = ['../../../../../PycharmProjects/ROSAutonomousFlight/' ...
+    'catkin_ws/src/ardrone_numeric_method_controller/scripts/positionsAndTime/'];
 x_n = load([PATH_TO_POSITIONS 'x_n.txt']);
 y_n = load([PATH_TO_POSITIONS 'y_n.txt']);
 Z_n = load([PATH_TO_POSITIONS 'z_n.txt']);
